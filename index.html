@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Не нажимай сюда</title>
+    <title>Не нажимай</title>
     <style>
         body {
             margin: 0;
@@ -11,60 +11,39 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f8ff;
+            background: #ffffff; /* Белый фон */
             font-family: Arial, sans-serif;
         }
-
         button {
-            padding: 30px 60px;
-            font-size: 28px;
-            background-color: #1E90FF;
+            background-color: #4CAF50; /* Зелёный */
             color: white;
             border: none;
-            border-radius: 15px;
+            border-radius: 50%; /* Круглая */
+            width: 200px;
+            height: 200px;
+            font-size: 20px;
             cursor: pointer;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            text-align: center;
+            transition: background-color 0.3s;
+            padding: 30px 60px; /* Больше места для текста */
         }
-
         button:hover {
-            background-color: #1C86EE;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        button:active {
-            transform: translateY(2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <button id="secretButton">Не нажимай сюда</button>
+    <button id="myButton" onclick="changeTextAndPlay()">не нажимай</button>
 
-    <audio id="disappointSound" preload="auto">
-        <source src="https://www.soundjay.com/human/sounds/sigh-1.mp3" type="audio/mpeg">
+    <audio id="myAudio">
+        <source src="zwyk.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
     </audio>
 
     <script>
-        const button = document.getElementById('secretButton');
-        const sound = document.getElementById('disappointSound');
-        let clicked = false;
-
-        button.addEventListener('click', function() {
-            if (!clicked) {
-                button.textContent = "Я же просил не нажимать, возвращайся и сиди в своем Threads дальше";
-                button.style.fontSize = "24px";
-                button.style.padding = "25px 40px";
-
-                sound.currentTime = 0;
-                sound.play();
-
-                clicked = true;
-            }
-        });
+        function changeTextAndPlay() {
+            document.getElementById('myButton').innerText = 'я же просил, не нажимать';
+            document.getElementById('myAudio').play();
+        }
     </script>
 </body>
 </html>
